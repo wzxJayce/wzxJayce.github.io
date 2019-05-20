@@ -62,11 +62,7 @@
 			
 				<li><a href="/">首页</a></li>
 	        
-				<li><a href="/archives/">所有文章</a></li>
-	        
-				<li><a href="/tags/">标签</a></li>
-	        
-				<li><a href="//">分类</a></li>
+				<li><a href="/archives/">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -122,10 +118,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -139,16 +131,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 25%"><a href="/">首页</a></li>
+					<li style="width: 50%"><a href="/">首页</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">所有文章</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/">标签</a></li>
-		        
-					<li style="width: 25%"><a href="//">分类</a></li>
+					<li style="width: 50%"><a href="/archives/">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -181,7 +169,30 @@
         
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            
+              <h4 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h4><p>给定一个整数数组 a，其中1 ≤ a[i] ≤ n （n为数组长度）, 其中有些元素出现两次而其他元素出现一次。<br>找到所有出现两次的元素。你可以不用到任何额外空间并在O(n)时间复杂度内解决这个问题吗？</p>
+<blockquote>
+<p>示例<br>输入:<br>[4,3,2,7,8,2,3,1]<br>输出:<br>[2,3]</p>
+</blockquote>
+<a id="more"></a>
+
+<h4 id="2-分析"><a href="#2-分析" class="headerlink" title="2.分析"></a>2.分析</h4><p>这一题刚刚开始是很非常懵，主要是没有理解到”给定一个整数数组 a，其中1 ≤ a[i] ≤ n （n为数组长度）” 这个条件的真谛。 这个条件就是暗示我们可以使用这个数组里面的值帮我们来记录一些信息。</p>
+<ul>
+<li>1.首先你的约束条件是 “你可以不用到任何额外空间并在O(n)时间复杂度内” ,所以不能两次遍历，只能遍历一次且需要用到数组里面的位置来帮助我们记录信息。</li>
+<li>2.那么我们就考虑循环每个值，利用这个（值-1）代表的索引值来记录是否已经被遍历到。</li>
+<li>3.遍历到则变为负数，如果第二次再次遍历到这个数，会发现这个数为负，则说明这个数是重复的。</li>
+</ul>
+<h4 id="3-解决"><a href="#3-解决" class="headerlink" title="3.解决"></a>3.解决</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findDuplicates</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        主要的思路就是利用正负来保存第一次遍历到的数值的状态</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            index = nums[i] - <span class="number">1</span>  <span class="comment"># 取到以这个值-1所在索引的值，判断这个值是否大于0</span></span><br><span class="line">            <span class="keyword">if</span> nums[index] &gt; <span class="number">0</span>:  <span class="comment"># 如果大于0，则说明这个值是第一次被遍历到，</span></span><br><span class="line">                nums[index] = -nums[index]  <span class="comment"># 则将这个值-1所在索引的值变负数，通过这个来记住已经遍历过一遍了</span></span><br><span class="line">            <span class="keyword">else</span>:  <span class="comment"># 当这个值是负数，表示这个值第二次被遍历到了，所以它是重复的，故添加到res中即可</span></span><br><span class="line">                res.append(nums[i])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+
+            
+          
+
+
       
         <h4 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h4><p>给定一个整数数组 a，其中1 ≤ a[i] ≤ n （n为数组长度）, 其中有些元素出现两次而其他元素出现一次。<br>找到所有出现两次的元素。你可以不用到任何额外空间并在O(n)时间复杂度内解决这个问题吗？</p>
 <blockquote>
@@ -285,7 +296,7 @@
       
       <div class="clearfix"></div>
     </div>
-  </div>
+  
 </article>
 
   
@@ -301,8 +312,8 @@
     </a>
   
   
-    <a href="/2019/03/09/0001-1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode-1. 两数之和（难度-简单）</div>
+    <a href="/2019/03/09/0003-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode-3. 无重复字符的最长子串（难度-中等）</div>
       <i class="icon-circle-right"></i>
     </a>
   

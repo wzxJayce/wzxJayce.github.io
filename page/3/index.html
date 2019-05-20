@@ -61,11 +61,7 @@
 			
 				<li><a href="/">首页</a></li>
 	        
-				<li><a href="/archives/">所有文章</a></li>
-	        
-				<li><a href="/tags/">标签</a></li>
-	        
-				<li><a href="//">分类</a></li>
+				<li><a href="/archives/">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -121,10 +117,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -138,16 +130,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 25%"><a href="/">首页</a></li>
+					<li style="width: 50%"><a href="/">首页</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">所有文章</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/">标签</a></li>
-		        
-					<li style="width: 25%"><a href="//">分类</a></li>
+					<li style="width: 50%"><a href="/archives/">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -182,7 +170,19 @@
         
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            		<h4 id="1-题目描述："><a href="#1-题目描述：" class="headerlink" title="1.题目描述："></a>1.题目描述：</h4><p>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。<br>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
+<blockquote>
+<p>示例:<br>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807</p>
+</blockquote>
+<h4 id="2-分析"><a href="#2-分析" class="headerlink" title="2.分析"></a>2.分析</h4><p>这个问题首先是一个链表问题，取出每个链表中的每一个节点进行相加，需要用一个变量去承接进位值。考虑的边界条件有两个，一个是两个链表的长度不一致，另一个是最后两个节点相加完有进位值。</p>
+            
+          
+
+
       
         <h4 id="1-题目描述："><a href="#1-题目描述：" class="headerlink" title="1.题目描述："></a>1.题目描述：</h4><p>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。<br>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
 <blockquote>
@@ -240,7 +240,7 @@
       
       <div class="clearfix"></div>
     </div>
-  </div>
+  
 </article>
 
 <aside class="wrap-side-operation">
@@ -281,7 +281,23 @@
         
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            		<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个包含了一些 0 和 1的非空二维数组 grid , 一个 岛屿 是由四个方向 (水平或垂直) 的 1 (代表土地) 构成的组合。你可以假设二维矩阵的四个边缘都被水包围着。</p>
+<p>找到给定的二维数组中最大的岛屿面积。(如果没有岛屿，则返回面积为0。)</p>
+<blockquote>
+<p>示例一<br>[[0,0,1,0,0,0,0,1,0,0,0,0,0],<br> [0,0,0,0,0,0,0,1,1,1,0,0,0],<br> [0,1,1,0,1,0,0,0,0,0,0,0,0],<br> [0,1,0,0,1,1,0,0,1,0,1,0,0],<br> [0,1,0,0,1,1,0,0,1,1,1,0,0],<br> [0,0,0,0,0,0,0,0,0,0,1,0,0],<br> [0,0,0,0,0,0,0,1,1,1,0,0,0],<br> [0,0,0,0,0,0,0,1,1,0,0,0,0]]<br>对于上面这个给定矩阵应返回 6。注意答案不应该是11，因为岛屿只能包含水平或垂直的四个方向的‘1’。</p>
+</blockquote>
+<blockquote>
+<p>示例二<br>[[0,0,0,0,0,0,0,0]]<br>对于上面这个给定的矩阵, 返回 0。</p>
+</blockquote>
+<p>注意: 给定的矩阵<code>grid</code> 的长度和宽度都不超过 50。</p>
+            
+          
+
+
       
         <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个包含了一些 0 和 1的非空二维数组 grid , 一个 岛屿 是由四个方向 (水平或垂直) 的 1 (代表土地) 构成的组合。你可以假设二维矩阵的四个边缘都被水包围着。</p>
 <p>找到给定的二维数组中最大的岛屿面积。(如果没有岛屿，则返回面积为0。)</p>
@@ -343,7 +359,149 @@
       
       <div class="clearfix"></div>
     </div>
-  </div>
+  
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-categories" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/31/categories/">分类</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/31/categories/" class="archive-article-date">
+  	<time datetime="2019-01-31T02:00:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-31</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            
+              
+            
+          
+
+
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/31/categories/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-tags" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/31/tags/">标签</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/31/tags/" class="archive-article-date">
+  	<time datetime="2018-01-31T02:03:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-31</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            
+              
+            
+          
+
+
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/31/tags/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  
 </article>
 
 <aside class="wrap-side-operation">

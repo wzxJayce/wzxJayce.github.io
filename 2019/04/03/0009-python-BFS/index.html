@@ -64,11 +64,7 @@
 			
 				<li><a href="/">首页</a></li>
 	        
-				<li><a href="/archives/">所有文章</a></li>
-	        
-				<li><a href="/tags/">标签</a></li>
-	        
-				<li><a href="//">分类</a></li>
+				<li><a href="/archives/">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -124,10 +120,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -141,16 +133,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 25%"><a href="/">首页</a></li>
+					<li style="width: 50%"><a href="/">首页</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">所有文章</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/">标签</a></li>
-		        
-					<li style="width: 25%"><a href="//">分类</a></li>
+					<li style="width: 50%"><a href="/archives/">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -183,7 +171,23 @@
         
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            
+              <h4 id="1-队列和广度优先搜索（BFS）"><a href="#1-队列和广度优先搜索（BFS）" class="headerlink" title="1.队列和广度优先搜索（BFS）"></a>1.队列和广度优先搜索（BFS）</h4><p><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/217/queue-and-bfs/869/" target="_blank" rel="noopener">原题来自LeetCode </a><br>广度优先搜索（BFS）的一个常见应用是找出从根结点到目标结点的最短路径。在本文中，我们提供了一个示例来解释在 BFS 算法中是如何逐步应用队列的。</p>
+<h4 id="2-示例"><a href="#2-示例" class="headerlink" title="2.示例"></a>2.示例</h4><p>如何使用 BFS 来找出根结点 A 和目标结点 G 之间的最短路径。<br><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/217/queue-and-bfs/869/" target="_blank" rel="noopener">演示动画</a><br><img src="https://upload-images.jianshu.io/upload_images/14146428-b6fb475c3294a1ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<a id="more"></a>
+
+<h4 id="3-python代码"><a href="#3-python代码" class="headerlink" title="3.python代码"></a>3.python代码</h4><p>我们使用了python自带的deque类来实现队列。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque  <span class="comment"># python自带的队列模型</span></span><br><span class="line"></span><br><span class="line">point = dict()</span><br><span class="line">point[<span class="string">'A'</span>] = [<span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>]</span><br><span class="line">point[<span class="string">'B'</span>] = [<span class="string">'E'</span>]</span><br><span class="line">point[<span class="string">'C'</span>] = [<span class="string">'E'</span>, <span class="string">"F"</span>]</span><br><span class="line">point[<span class="string">'D'</span>] = [<span class="string">'G'</span>]</span><br><span class="line">point[<span class="string">'F'</span>] = [<span class="string">'G'</span>]</span><br><span class="line">point[<span class="string">'E'</span>] = [<span class="string">''</span>]</span><br><span class="line">point[<span class="string">'G'</span>] = [<span class="string">''</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search_G</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    通过A节点寻找到达G的最短路径</span></span><br><span class="line"><span class="string">    :param name:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    search_queue = deque()  <span class="comment"># 建立一个双端队列</span></span><br><span class="line">    search_queue += point[name]  <span class="comment"># 将你的第一代子元素都加入到这个搜索队列中</span></span><br><span class="line">    searched = []  <span class="comment"># 这个数组用于记录检查过的元素</span></span><br><span class="line">    search_order = [name]  <span class="comment"># 列表用于记录找到G这个节点的广度优先遍历顺序</span></span><br><span class="line">    <span class="keyword">while</span> search_queue:  <span class="comment"># 队列不为空时循环执行</span></span><br><span class="line">        element = search_queue.popleft()  <span class="comment"># 对队列中的第一项进行判断，出队</span></span><br><span class="line">        <span class="keyword">if</span> element <span class="keyword">not</span> <span class="keyword">in</span> searched:  <span class="comment"># 仅当这个元素没被检查过时才检查</span></span><br><span class="line">            search_order.append(element)  <span class="comment"># 记录广度优先查找G的顺序</span></span><br><span class="line">            <span class="keyword">if</span> element == <span class="string">"G"</span>:  <span class="comment"># 如果是G则说明找到了</span></span><br><span class="line">                print(element + <span class="string">' is been discovered'</span>)</span><br><span class="line">                <span class="keyword">return</span> search_order</span><br><span class="line">            <span class="keyword">else</span>:  <span class="comment"># 如果element不是G，就将这个element的子元素都加入搜索队列</span></span><br><span class="line">                search_queue += point[element]  <span class="comment"># 将未搜索的元素添加到队列当中去</span></span><br><span class="line">                searched.append(element)  <span class="comment"># 将这个元素标记为检查过</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(search_G(<span class="string">"A"</span>))</span><br></pre></td></tr></table></figure>
+
+
+            
+          
+
+
       
         <h4 id="1-队列和广度优先搜索（BFS）"><a href="#1-队列和广度优先搜索（BFS）" class="headerlink" title="1.队列和广度优先搜索（BFS）"></a>1.队列和广度优先搜索（BFS）</h4><p><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/217/queue-and-bfs/869/" target="_blank" rel="noopener">原题来自LeetCode </a><br>广度优先搜索（BFS）的一个常见应用是找出从根结点到目标结点的最短路径。在本文中，我们提供了一个示例来解释在 BFS 算法中是如何逐步应用队列的。</p>
 <h4 id="2-示例"><a href="#2-示例" class="headerlink" title="2.示例"></a>2.示例</h4><p>如何使用 BFS 来找出根结点 A 和目标结点 G 之间的最短路径。<br><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/217/queue-and-bfs/869/" target="_blank" rel="noopener">演示动画</a><br><img src="https://upload-images.jianshu.io/upload_images/14146428-b6fb475c3294a1ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
@@ -284,24 +288,24 @@
       
       <div class="clearfix"></div>
     </div>
-  </div>
+  
 </article>
 
   
 <nav id="article-nav">
   
-    <a href="/2019/04/03/0008-python-设计循环队列/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/05/0012-岛屿数量/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          LeetCode-数据结构 循环队列的实现 设计循环队列
+          LeetCode-岛屿的个数 深度优先（使用递归） 广度优先（使用队列） 两种解答
         
       </div>
     </a>
   
   
-    <a href="/2019/04/02/0016-无重复字符的最长子串/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python LeetCode-3. 无重复字符的最长子串（python）</div>
+    <a href="/2019/04/03/0008-python-设计循环队列/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode-数据结构 循环队列的实现 设计循环队列</div>
       <i class="icon-circle-right"></i>
     </a>
   

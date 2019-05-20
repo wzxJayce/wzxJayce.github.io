@@ -62,11 +62,7 @@
 			
 				<li><a href="/">首页</a></li>
 	        
-				<li><a href="/archives/">所有文章</a></li>
-	        
-				<li><a href="/tags/">标签</a></li>
-	        
-				<li><a href="//">分类</a></li>
+				<li><a href="/archives/">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -122,10 +118,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -139,16 +131,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 25%"><a href="/">首页</a></li>
+					<li style="width: 50%"><a href="/">首页</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">所有文章</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/">标签</a></li>
-		        
-					<li style="width: 25%"><a href="//">分类</a></li>
+					<li style="width: 50%"><a href="/archives/">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -181,7 +169,50 @@
         
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            
+              <h4 id="1-设计你的循环队列"><a href="#1-设计你的循环队列" class="headerlink" title="1.设计你的循环队列"></a>1.设计你的循环队列</h4><p><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/216/queue-first-in-first-out-data-structure/865/" target="_blank" rel="noopener">Leet Code 原题链接</a><br><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/216/queue-first-in-first-out-data-structure/864/" target="_blank" rel="noopener">Leet Code 原题动画演示视频</a><br>设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。</p>
+<p>循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。</p>
+<p>你的实现应该支持如下操作：</p>
+<ul>
+<li>MyCircularQueue(k): 构造器，设置队列长度为 k 。</li>
+<li>Front: 从队首获取元素。如果队列为空，返回 -1 。</li>
+<li>Rear: 获取队尾元素。如果队列为空，返回 -1 。</li>
+<li>enQueue(value): 向循环队列插入一个元素。如果成功插入则返回真。</li>
+<li>deQueue(): 从循环队列中删除一个元素。如果成功删除则返回真。</li>
+<li>isEmpty(): 检查循环队列是否为空。</li>
+<li>isFull(): 检查循环队列是否已满。</li>
+</ul>
+<a id="more"></a>
+
+<p>Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called “Ring Buffer”.</p>
+<p>One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.</p>
+<p>Your implementation should support the following operations:</p>
+<ul>
+<li>MyCircularQueue(k): Constructor, set the size of the queue to be k.</li>
+<li>Front: Get the front item from the queue. If the queue is empty, return -1.</li>
+<li>Rear: Get the last item from the queue. If the queue is empty, return -1.</li>
+<li>enQueue(value): Insert an element into the circular queue. Return true if the operation is successful.</li>
+<li>deQueue(): Delete an element from the circular queue. Return true if the operation is successful.</li>
+<li>isEmpty(): Checks whether the circular queue is empty or not.</li>
+<li>isFull(): Checks whether the circular queue is full or not.</li>
+</ul>
+<h4 id="2-我的思路"><a href="#2-我的思路" class="headerlink" title="2.我的思路"></a>2.我的思路</h4><p>我们仔细研究一下<a href="https://leetcode-cn.com/explore/learn/card/queue-stack/216/queue-first-in-first-out-data-structure/864/" target="_blank" rel="noopener">Leet Code 原题动画演示视频</a>这一个视频，发现来判断队空和队满的条件。假定我们有两个指针，分别为头指针head和尾指针tail。</p>
+<ul>
+<li>从视频中可以看出假定<code>head</code>为-1且<code>tail</code>为-1的时候，是一个队空的条件。</li>
+<li>当<code>head==tail</code>的时候，整个队列就只剩下一个<code>element</code>.</li>
+<li>当<code>(tail+1) % max_length</code> 等于 <code>head</code>的时候，代表队满。<br>理解这三个条件后，我们可以写出如下代码。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCircularQueue</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here. Set the size of the queue to be k.</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.queue = [<span class="string">""</span>] * k</span><br><span class="line">        self.max_length = k</span><br><span class="line">        self.head = <span class="number">-1</span></span><br><span class="line">        self.tail = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enQueue</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Insert an element into the circular queue. Return true if the operation is successful.</span></span><br><span class="line"><span class="string">        :type value: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.isFull():</span><br><span class="line">            <span class="keyword">if</span> self.head == <span class="number">-1</span>:</span><br><span class="line">                self.head = <span class="number">0</span></span><br><span class="line">            self.tail = (self.tail + <span class="number">1</span>) % self.max_length  <span class="comment"># 移动tail指针位置</span></span><br><span class="line">            self.queue[self.tail] = value  <span class="comment"># 将值插入</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deQueue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Delete an element from the circular queue. Return true if the operation is successful.</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.isEmpty():</span><br><span class="line">            <span class="keyword">if</span> self.head == self.tail:  <span class="comment"># the last element,we will delete tha last element</span></span><br><span class="line">                self.head, self.tail = <span class="number">-1</span>, <span class="number">-1</span>  <span class="comment"># 标记这个队列为一个空队列</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 移动head指针位置，删除这个节点只需要移动head就行</span></span><br><span class="line">                self.head = (self.head + <span class="number">1</span>) % self.max_length  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Front</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Get the front item from the queue.</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> <span class="keyword">if</span> self.isEmpty() <span class="keyword">else</span> self.queue[self.head]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Rear</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Get the last item from the queue.</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> <span class="keyword">if</span> self.isEmpty() <span class="keyword">else</span> self.queue[self.tail]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Checks whether the circular queue is empty or not.</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.head == <span class="number">-1</span> <span class="keyword">and</span> self.tail == <span class="number">-1</span>  <span class="comment"># 队空条件</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isFull</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Checks whether the circular queue is full or not.</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> (self.tail + <span class="number">1</span>) % self.max_length == self.head  <span class="comment"># 如果成立，则代表队满</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+            
+          
+
+
       
         <h4 id="1-设计你的循环队列"><a href="#1-设计你的循环队列" class="headerlink" title="1.设计你的循环队列"></a>1.设计你的循环队列</h4><p><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/216/queue-first-in-first-out-data-structure/865/" target="_blank" rel="noopener">Leet Code 原题链接</a><br><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/216/queue-first-in-first-out-data-structure/864/" target="_blank" rel="noopener">Leet Code 原题动画演示视频</a><br>设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。</p>
 <p>循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。</p>
@@ -313,24 +344,24 @@
       
       <div class="clearfix"></div>
     </div>
-  </div>
+  
 </article>
 
   
 <nav id="article-nav">
   
-    <a href="/2019/04/05/0014-数组中重复的数据/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/03/0009-python-BFS/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Python LeetCode-442-数组中重复的数据（难度-中等）（python）
+          python-数据结构 队列和广度优先搜索（BFS）
         
       </div>
     </a>
   
   
-    <a href="/2019/04/03/0009-python-BFS/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python-数据结构 队列和广度优先搜索（BFS）</div>
+    <a href="/2019/04/02/0016-无重复字符的最长子串/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python LeetCode-3. 无重复字符的最长子串（python）</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -62,11 +62,7 @@
 			
 				<li><a href="/">首页</a></li>
 	        
-				<li><a href="/archives/">所有文章</a></li>
-	        
-				<li><a href="/tags/">标签</a></li>
-	        
-				<li><a href="//">分类</a></li>
+				<li><a href="/archives/">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -122,10 +118,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -139,16 +131,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 25%"><a href="/">首页</a></li>
+					<li style="width: 50%"><a href="/">首页</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">所有文章</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/">标签</a></li>
-		        
-					<li style="width: 25%"><a href="//">分类</a></li>
+					<li style="width: 50%"><a href="/archives/">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -181,7 +169,29 @@
         
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            
+              <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个包含了一些 0 和 1的非空二维数组 grid , 一个 岛屿 是由四个方向 (水平或垂直) 的 1 (代表土地) 构成的组合。你可以假设二维矩阵的四个边缘都被水包围着。</p>
+<p>找到给定的二维数组中最大的岛屿面积。(如果没有岛屿，则返回面积为0。)</p>
+<blockquote>
+<p>示例一<br>[[0,0,1,0,0,0,0,1,0,0,0,0,0],<br> [0,0,0,0,0,0,0,1,1,1,0,0,0],<br> [0,1,1,0,1,0,0,0,0,0,0,0,0],<br> [0,1,0,0,1,1,0,0,1,0,1,0,0],<br> [0,1,0,0,1,1,0,0,1,1,1,0,0],<br> [0,0,0,0,0,0,0,0,0,0,1,0,0],<br> [0,0,0,0,0,0,0,1,1,1,0,0,0],<br> [0,0,0,0,0,0,0,1,1,0,0,0,0]]<br>对于上面这个给定矩阵应返回 6。注意答案不应该是11，因为岛屿只能包含水平或垂直的四个方向的‘1’。</p>
+</blockquote>
+<blockquote>
+<p>示例二<br>[[0,0,0,0,0,0,0,0]]<br>对于上面这个给定的矩阵, 返回 0。</p>
+</blockquote>
+<p>注意: 给定的矩阵<code>grid</code> 的长度和宽度都不超过 50。</p>
+<a id="more"></a>
+<h3 id="分析与解答"><a href="#分析与解答" class="headerlink" title="分析与解答"></a>分析与解答</h3><p>这道题目和前面做过的<a href="https://www.jianshu.com/p/c5e2cc449088" target="_blank" rel="noopener">python-数据结构 岛屿的个数 深度优先 广度优先 两种解答</a>是一个一模一样的题目，主要是可以使用队列来进行一个广度优先查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"></span><br><span class="line">    def maxAreaOfIsland(self, grid) -&gt; int:</span><br><span class="line">        if not grid:</span><br><span class="line">            return 0</span><br><span class="line"></span><br><span class="line">        if isinstance(grid[0], bool) or isinstance(grid[0], int):</span><br><span class="line">            return 1 if grid[0] else 0</span><br><span class="line">        ilsand_list = [0]  # 排除当没有岛屿的时候，执行max函数出错</span><br><span class="line">        m, n = len(grid), len(grid[0])  # m代表行， n代表列</span><br><span class="line">        for i in range(m):</span><br><span class="line">            for j in range(n):</span><br><span class="line">                if grid[i][j] == 1:</span><br><span class="line">                    grid[i][j] = &quot;0&quot;</span><br><span class="line">                    size_of_island, grid = self.get_size_of_island(i, j, grid)  # 利用队列（广度优先查询），将岛屿所在位置全部求出并且获得岛屿大小</span><br><span class="line">                    ilsand_list.append(size_of_island)</span><br><span class="line"></span><br><span class="line">        return max(ilsand_list)</span><br><span class="line"></span><br><span class="line">    def get_size_of_island(self, i, j, grid):</span><br><span class="line">        size_of_island = 1  # 能走到这边说明这个岛屿的最小初始面积为1</span><br><span class="line">        m, n = len(grid), len(grid[0])  # m代表行， n代表列</span><br><span class="line">        use_list = [[i, j], ]</span><br><span class="line">        while len(use_list):</span><br><span class="line">            i, j = use_list.pop(0)</span><br><span class="line">            if i &gt; 0:</span><br><span class="line">                if grid[i - 1][j] == 1:</span><br><span class="line">                    grid[i - 1][j] = &quot;0&quot;</span><br><span class="line">                    use_list.append([i - 1, j])</span><br><span class="line">                    size_of_island += 1</span><br><span class="line"></span><br><span class="line">            if i &lt; m - 1:</span><br><span class="line">                if grid[i + 1][j] == 1:</span><br><span class="line">                    grid[i + 1][j] = &quot;0&quot;</span><br><span class="line">                    use_list.append([i + 1, j])</span><br><span class="line">                    size_of_island += 1</span><br><span class="line"></span><br><span class="line">            if j &gt; 0:</span><br><span class="line">                if grid[i][j - 1] == 1:</span><br><span class="line">                    grid[i][j - 1] = &quot;0&quot;</span><br><span class="line">                    use_list.append([i, j - 1])</span><br><span class="line">                    size_of_island += 1</span><br><span class="line"></span><br><span class="line">            if j &lt; n - 1:</span><br><span class="line">                if grid[i][j + 1] == 1:</span><br><span class="line">                    grid[i][j + 1] = &quot;0&quot;</span><br><span class="line">                    use_list.append([i, j + 1])</span><br><span class="line">                    size_of_island += 1</span><br><span class="line"></span><br><span class="line">        return size_of_island, grid</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    s = Solution()</span><br><span class="line">    g0 = []</span><br><span class="line">    # g1 = [[&quot;0&quot;]]</span><br><span class="line">    # g2 = [[&quot;1&quot;, &quot;1&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;],</span><br><span class="line">    #       [&quot;1&quot;, &quot;1&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;],</span><br><span class="line">    #       [&quot;0&quot;, &quot;0&quot;, &quot;1&quot;, &quot;0&quot;, &quot;0&quot;],</span><br><span class="line">    #       [&quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;1&quot;, &quot;1&quot;]]</span><br><span class="line">    # for g in [g0, g1, g2]:</span><br><span class="line">    #     print(s.numIslands(g))</span><br><span class="line">    a = [[1, 1, 0, 0, 0],</span><br><span class="line">         [1, 1, 0, 0, 0],</span><br><span class="line">         [0, 0, 0, 1, 1],</span><br><span class="line">         [0, 0, 0, 1, 1]]</span><br><span class="line">    print(s.maxAreaOfIsland(a))</span><br></pre></td></tr></table></figure>
+
+
+            
+          
+
+
       
         <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个包含了一些 0 和 1的非空二维数组 grid , 一个 岛屿 是由四个方向 (水平或垂直) 的 1 (代表土地) 构成的组合。你可以假设二维矩阵的四个边缘都被水包围着。</p>
 <p>找到给定的二维数组中最大的岛屿面积。(如果没有岛屿，则返回面积为0。)</p>
@@ -292,7 +302,7 @@
       
       <div class="clearfix"></div>
     </div>
-  </div>
+  
 </article>
 
   
@@ -307,6 +317,11 @@
       </div>
     </a>
   
+  
+    <a href="/2019/01/31/categories/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">分类</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

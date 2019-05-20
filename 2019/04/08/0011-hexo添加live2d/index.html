@@ -62,11 +62,7 @@
 			
 				<li><a href="/">首页</a></li>
 	        
-				<li><a href="/archives/">所有文章</a></li>
-	        
-				<li><a href="/tags/">标签</a></li>
-	        
-				<li><a href="//">分类</a></li>
+				<li><a href="/archives/">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -122,10 +118,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -139,16 +131,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 25%"><a href="/">首页</a></li>
+					<li style="width: 50%"><a href="/">首页</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">所有文章</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/">标签</a></li>
-		        
-					<li style="width: 25%"><a href="//">分类</a></li>
+					<li style="width: 50%"><a href="/archives/">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -181,7 +169,40 @@
         
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            
+              <h3 id="1-看看成果"><a href="#1-看看成果" class="headerlink" title="1.看看成果"></a>1.看看成果</h3><p><a href="https://wzxjayce.github.io/" target="_blank" rel="noopener">示例-我的博客</a></p>
+<h3 id="2-安装相关依赖"><a href="#2-安装相关依赖" class="headerlink" title="2.安装相关依赖"></a>2.安装相关依赖</h3><p>在你博客的根目录运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后，你可以在你的<code>博客根文件夹/node_modules/</code>底下找到<code>live2d-widget</code>这个文件夹。</p>
+<a id="more"></a>
+<h3 id="3-安装你想要的live2d动画小人、小狗。。。anyway"><a href="#3-安装你想要的live2d动画小人、小狗。。。anyway" class="headerlink" title="3.安装你想要的live2d动画小人、小狗。。。anyway"></a>3.安装你想要的live2d动画小人、小狗。。。anyway</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install live2d-widget-model-haru</span><br></pre></td></tr></table></figure>
+
+<p>live2d-widget-model-haru这个是一个动画的样式model，你可以在网上搜到很多。</p>
+<p>安装成功后，你可以在你的<code>博客根文件夹/node_modules/</code>底下找到<code>live2d-widget-model-haru</code>这个文件夹。<br><a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">这里很多model供你选择</a>，这里可以<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">动画预览</a>或者你可以自己再找找。</p>
+<h3 id="4-修改主配置文件（根目录下）-config-yml"><a href="#4-修改主配置文件（根目录下）-config-yml" class="headerlink" title="4.修改主配置文件（根目录下）_config.yml"></a>4.修改主配置文件（根目录下）<code>_config.yml</code></h3><p>在主配置文件（根目录下）<code>_config.yml</code>中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># 7.live2d配置宠物</span><br><span class="line">live2d:</span><br><span class="line">  # 当enable 为true的时候，会启用yaliya主题自带宠物shizuku,橘头发小姐姐，而且不可以配置位置，所以需要讲enable注释掉</span><br><span class="line">  # enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw/</span><br><span class="line">  pluginJsPath: lib/</span><br><span class="line">  pluginModelPath: assets/</span><br><span class="line">  model:</span><br><span class="line">    # live2d-widget-model-wanko 是一只趴在碗里的狗狗</span><br><span class="line">    use: live2d-widget-model-wanko # 通过修改use来确定使用哪种model</span><br><span class="line">    # hibiki 是一个御姐</span><br><span class="line">    # use: live2d-widget-model-hibiki</span><br><span class="line">    # haruto 海军服女孩，有点难看</span><br><span class="line">    # use: live2d-widget-model-haruto</span><br><span class="line">  display:</span><br><span class="line">    position: left</span><br><span class="line">    width: 150</span><br><span class="line">    height: 300</span><br><span class="line">    # 一个比较可爱的位置</span><br><span class="line">    # hOffset: 200 </span><br><span class="line">    # vOffset: -100</span><br><span class="line">    # 第二个位置配置，这个在左侧边栏位置很居中</span><br><span class="line">    hOffset: 80  # 调节水平位置</span><br><span class="line">    vOffset: -50  # 调节垂直位置</span><br><span class="line">  mobile:</span><br><span class="line">    show: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-yaliya-主题中的一个小坑"><a href="#5-yaliya-主题中的一个小坑" class="headerlink" title="5.yaliya 主题中的一个小坑"></a>5.yaliya 主题中的一个小坑</h3><p>yaliya 主题本身已经配置了一个live2d,当你在主配置文件（根目录下）<code>_config.yml</code>中添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<p>当enable 为true的时候，会<strong>启用yaliya主题自带宠物shizuku,橘头发小姐姐</strong>，而且不可以配置位置，需要你自己去修改css等，比较麻烦，所以需要将将enable注释掉(网上教学会带上这个参数，自己弄了一小会儿才搞明白的)</p>
+<h3 id="6-最后布置上线"><a href="#6-最后布置上线" class="headerlink" title="6.最后布置上线"></a>6.最后布置上线</h3><p>先进行线下测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<p>访问<a href="localhost:4000" target="_blank" rel="noopener">localhost:4000</a>来进行测试，成功后，上线：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-觉得好的话"><a href="#7-觉得好的话" class="headerlink" title="7.觉得好的话"></a>7.觉得好的话</h3><p><strong>骚年</strong>不点个心心再走么？</p>
+
+            
+          
+
+
       
         <h3 id="1-看看成果"><a href="#1-看看成果" class="headerlink" title="1.看看成果"></a>1.看看成果</h3><p><a href="https://wzxjayce.github.io/" target="_blank" rel="noopener">示例-我的博客</a></p>
 <h3 id="2-安装相关依赖"><a href="#2-安装相关依赖" class="headerlink" title="2.安装相关依赖"></a>2.安装相关依赖</h3><p>在你博客的根目录运行以下命令：</p>
@@ -299,7 +320,7 @@
       
       <div class="clearfix"></div>
     </div>
-  </div>
+  
 </article>
 
   
@@ -315,8 +336,8 @@
     </a>
   
   
-    <a href="/2019/04/05/0012-岛屿数量/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode-岛屿的个数 深度优先（使用递归） 广度优先（使用队列） 两种解答</div>
+    <a href="/2019/04/05/0014-数组中重复的数据/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python LeetCode-442-数组中重复的数据（难度-中等）（python）</div>
       <i class="icon-circle-right"></i>
     </a>
   

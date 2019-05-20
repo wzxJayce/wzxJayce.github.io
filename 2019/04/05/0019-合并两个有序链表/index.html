@@ -62,11 +62,7 @@
 			
 				<li><a href="/">首页</a></li>
 	        
-				<li><a href="/archives/">所有文章</a></li>
-	        
-				<li><a href="/tags/">标签</a></li>
-	        
-				<li><a href="//">分类</a></li>
+				<li><a href="/archives/">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -122,10 +118,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -139,16 +131,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 25%"><a href="/">首页</a></li>
+					<li style="width: 50%"><a href="/">首页</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">所有文章</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/">标签</a></li>
-		        
-					<li style="width: 25%"><a href="//">分类</a></li>
+					<li style="width: 50%"><a href="/archives/">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -181,7 +169,32 @@
         
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            
+              <h4 id="LeetCode链接"><a href="#LeetCode链接" class="headerlink" title="LeetCode链接"></a><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">LeetCode链接</a></h4><h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+<blockquote>
+<p>示例：<br>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<h3 id="2-分析"><a href="#2-分析" class="headerlink" title="2.分析"></a>2.分析</h3><p>这道题是很基本的链表题。思路很简单：</p>
+<ul>
+<li>特殊值处理:<code>L1</code>和<code>L2</code>分别为空的时候</li>
+<li>构建一个新的链表（通过比较<code>L1</code>和<code>L2</code>的头节点），确定头节点<code>res_head</code>（一个小技巧：通过一个<code>first_flag</code>来控制仅仅只需要在循环第一次执行的事情，这个就像开关，有无穷尽的组合）</li>
+<li>不断比较<code>L1</code>和<code>L2</code>上的节点，链接到新链表后面</li>
+<li>当<code>L1</code>或者<code>L2</code>其中一个节点提前用光，那么把另一个后面那段链表直接接到新的链表上即可</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="3-解答"><a href="#3-解答" class="headerlink" title="3.解答"></a>3.解答</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"># Definition for singly-linked list.</span><br><span class="line"># class ListNode:</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.next = None</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def mergeTwoLists(self, l1, l2):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type l1: ListNode</span><br><span class="line">        :type l2: ListNode</span><br><span class="line">        :rtype: ListNode</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        思路：两个链表都是有序的，那么分别遍历两个链表，比较每一个节点，汇集成一个新的链表</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # ①特殊值处理</span><br><span class="line">        if not l1:</span><br><span class="line">            return l2</span><br><span class="line"></span><br><span class="line">        if not l2:</span><br><span class="line">            return l1</span><br><span class="line"></span><br><span class="line">        # ②构建新的有序链表（不断比较l1和l2上的节点）</span><br><span class="line">        current_1 = l1</span><br><span class="line">        current_2 = l2</span><br><span class="line">        first_flag = True  # 控制第一次才执行事情的flag</span><br><span class="line"></span><br><span class="line">        while current_1 and current_2:</span><br><span class="line">            if first_flag:  # 构建新的链表，确定新的头结点res_head </span><br><span class="line">                res_head = current_1 if current_1.val &lt; current_2.val else current_2</span><br><span class="line">                first_flag = False</span><br><span class="line">                if current_1.val &lt; current_2.val:</span><br><span class="line">                    current_1 = current_1.next</span><br><span class="line">                else:</span><br><span class="line">                    current_2 = current_2.next</span><br><span class="line">                current = res_head</span><br><span class="line">                continue</span><br><span class="line">            if current_1.val &lt; current_2.val:</span><br><span class="line">                current.next = current_1  # 使得当前节点指向新的节点</span><br><span class="line">                current = current_1  # 构建下一次循环使用的current 节点</span><br><span class="line">                current_1 = current_1.next</span><br><span class="line">            else:</span><br><span class="line">                current.next = current_2</span><br><span class="line">                current = current_2</span><br><span class="line">                current_2 = current_2.next</span><br><span class="line"></span><br><span class="line">        # ③处理剩余值</span><br><span class="line">        current.next = current_1 if current_1 else current_2</span><br><span class="line"></span><br><span class="line">        return res_head</span><br></pre></td></tr></table></figure>
+
+<p>简洁点写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># Definition for singly-linked list.</span><br><span class="line"># class ListNode:</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.next = None</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def mergeTwoLists(self, l1: &apos;ListNode&apos;, l2: &apos;ListNode&apos;) -&gt; &apos;ListNode&apos;:</span><br><span class="line">        head = ListNode(0)</span><br><span class="line">        node = head</span><br><span class="line">        while l1 and l2:</span><br><span class="line">            if l1.val &lt;= l2.val:</span><br><span class="line">                node.next = l1</span><br><span class="line">                l1 = l1.next</span><br><span class="line">            else:</span><br><span class="line">                node.next = l2</span><br><span class="line">                l2 = l2.next</span><br><span class="line">            node = node.next</span><br><span class="line">        if l1:</span><br><span class="line">            node.next = l1</span><br><span class="line">        if l2:</span><br><span class="line">            node.next = l2</span><br><span class="line">        return head.next</span><br></pre></td></tr></table></figure>
+            
+          
+
+
       
         <h4 id="LeetCode链接"><a href="#LeetCode链接" class="headerlink" title="LeetCode链接"></a><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">LeetCode链接</a></h4><h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
 <blockquote>
@@ -295,17 +308,17 @@
       
       <div class="clearfix"></div>
     </div>
-  </div>
+  
 </article>
 
   
 <nav id="article-nav">
   
-    <a href="/2019/04/05/0012-岛屿数量/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/05/0014-数组中重复的数据/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          LeetCode-岛屿的个数 深度优先（使用递归） 广度优先（使用队列） 两种解答
+          Python LeetCode-442-数组中重复的数据（难度-中等）（python）
         
       </div>
     </a>

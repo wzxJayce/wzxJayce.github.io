@@ -65,11 +65,7 @@
 			
 				<li><a href="/">首页</a></li>
 	        
-				<li><a href="/archives/">所有文章</a></li>
-	        
-				<li><a href="/tags/">标签</a></li>
-	        
-				<li><a href="//">分类</a></li>
+				<li><a href="/archives/">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -125,10 +121,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -142,16 +134,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 25%"><a href="/">首页</a></li>
+					<li style="width: 50%"><a href="/">首页</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">所有文章</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/">标签</a></li>
-		        
-					<li style="width: 25%"><a href="//">分类</a></li>
+					<li style="width: 50%"><a href="/archives/">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -184,7 +172,47 @@
         
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody"> -->
+      <!-- 修改标签和分类 -->
+        
+          
+            
+              <blockquote>
+<p><code>本文基于python3</code></p>
+</blockquote>
+<h3 id="0-引入"><a href="#0-引入" class="headerlink" title="0.引入"></a>0.引入</h3><p>元类就是深度的魔法，99%的用户应该根本不必为此操心。如果你想搞清楚究竟是否需要用到元类，那么你就不需要它。那些实际用到元类的人都非常清楚地知道他们需要做什么，而且根本不需要解释为什么要用元类。<br>                                                                                                                                                   –Python界的领袖 Tim Peters</p>
+<h3 id="1-困惑"><a href="#1-困惑" class="headerlink" title="1.困惑"></a>1.困惑</h3><p><strong>如果你还没看过元类编程，推荐你看完再来看这篇文章。</strong><br>来看这篇文章的童鞋都是在看完一部分python的元类编程后，产生了宇宙究极问题：到底是先有鸡还是先有蛋。我当时也十分纠结到底type和object谁是谁的爸爸。</p>
+<a id="more"></a>
+
+<h3 id="2-分析"><a href="#2-分析" class="headerlink" title="2.分析"></a>2.分析</h3><p><code>type</code>和<code>object</code>之间的关系:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>object.__class__</span><br><span class="line">&lt;type <span class="string">'type'</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>以上说明<code>object</code>类是<code>type</code>元类的一个实例对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>object.__bases__</span><br><span class="line">()</span><br></pre></td></tr></table></figure>
+
+<p><code>object</code>这个类的父类为空，说明 object类已经处于继承链条的顶端，是所有类的父类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>type.__class__</span><br><span class="line">&lt;type <span class="string">'type'</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>说明<code>type</code>也是<code>type</code>实例出来的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>type.__base__</span><br><span class="line">&lt;type <span class="string">'object'</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>type</code>的父类是<code>object</code>。</p>
+<blockquote>
+<p><strong>刚刚表达大致的关系如下（手残勿喷）</strong>:
+<img src="https://upload-images.jianshu.io/upload_images/14146428-cbfe831a2d98c35b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="type和object的关系 .jpg"></p>
+</blockquote>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h3><ul>
+<li>在不考虑元类编程，也就是自定义元类的情况下，所有的类都是由<code>type</code>创造出来的。包括<code>object</code>。</li>
+<li><code>type</code>创造了所有类，包括<code>object</code>。</li>
+<li><code>object</code>是所有类的最高父类。</li>
+<li>对象的类型叫作类<code>class</code>，类的类型就称作元类 <code>meta-class</code>。是不是很像“爸爸的爸爸叫爷爷”？<br>可以参考如下关系：<br><img src="https://upload-images.jianshu.io/upload_images/14146428-a8ea5e0241dd5e86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="python中对象的类型"><br><a href="https://www.zhihu.com/question/38791962" target="_blank" rel="noopener">图片出处</a><br>我们可以通俗的说是元类（默认是<code>type</code>）实例出了所有的类，类又实例出了对象。三个空格代表三种<code>对象</code>。自己的理解，如有问题可以联系我。</li>
+</ul>
+<h3 id="4-相关文章推荐"><a href="#4-相关文章推荐" class="headerlink" title="4.相关文章推荐"></a>4.相关文章推荐</h3><p><a href="https://www.zhihu.com/question/38791962" target="_blank" rel="noopener">Python 的 type 和 object 之间是怎么一种关系？</a><br><a href="https://segmentfault.com/a/1190000008938763" target="_blank" rel="noopener">python 中type和object的关系</a><br><a href="https://github.com/qiwsir/StackOverFlowCn/blob/master/302.md" target="_blank" rel="noopener">Python中的元类是什么？</a><br><a href="https://lotabout.me/2018/Understanding-Python-MetaClass/" target="_blank" rel="noopener">Python 元类 (MetaClass) 小教程</a></p>
+
+            
+          
+
+
       
         <blockquote>
 <p><code>本文基于python3</code></p>
@@ -305,7 +333,7 @@
       
       <div class="clearfix"></div>
     </div>
-  </div>
+  
 </article>
 
   
