@@ -23,7 +23,7 @@
     <link rel="alternative" href="/atom.xml" title="翁振西的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/avatar.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -47,7 +47,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Jayce Weng</a></h1>
@@ -59,9 +59,13 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/">首页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives/">所有文章</a></li>
+	        
+				<li><a href="/tags/">标签</a></li>
+	        
+				<li><a href="//">分类</a></li>
 	        
 			</ul>
 		</nav>
@@ -85,6 +89,8 @@
 				
 					<a class="github" target="_blank" href="https://github.com/wzxJayce" title="github"><i class="icon-github"></i></a>
 		        
+					<a class="jianshu" target="_blank" href="https://www.jianshu.com/u/08a18b7f128f" title="jianshu"><i class="icon-jianshu"></i></a>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -101,7 +107,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Jayce Weng</h1>
@@ -115,6 +121,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -122,16 +132,22 @@
 					
 						<a class="github" target="_blank" href="https://github.com/wzxJayce" title="github"><i class="icon-github"></i></a>
 			        
+						<a class="jianshu" target="_blank" href="https://www.jianshu.com/u/08a18b7f128f" title="jianshu"><i class="icon-jianshu"></i></a>
+			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">首页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 25%"><a href="/archives/">所有文章</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/">标签</a></li>
+		        
+					<li style="width: 25%"><a href="//">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -147,98 +163,6 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <article id="post-0009-python-BFS" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/03/0009-python-BFS/">python-数据结构 队列和广度优先搜索（BFS）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/03/0009-python-BFS/" class="archive-article-date">
-  	<time datetime="2019-04-03T13:05:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-队列和广度优先搜索（BFS）"><a href="#1-队列和广度优先搜索（BFS）" class="headerlink" title="1.队列和广度优先搜索（BFS）"></a>1.队列和广度优先搜索（BFS）</h4><p><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/217/queue-and-bfs/869/" target="_blank" rel="noopener">原题来自LeetCode </a><br>广度优先搜索（BFS）的一个常见应用是找出从根结点到目标结点的最短路径。在本文中，我们提供了一个示例来解释在 BFS 算法中是如何逐步应用队列的。</p>
-<h4 id="2-示例"><a href="#2-示例" class="headerlink" title="2.示例"></a>2.示例</h4><p>如何使用 BFS 来找出根结点 A 和目标结点 G 之间的最短路径。<br><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/217/queue-and-bfs/869/" target="_blank" rel="noopener">演示动画</a><br><img src="https://upload-images.jianshu.io/upload_images/14146428-b6fb475c3294a1ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-        
-          <a class="article-more-a" href="/2019/04/03/0009-python-BFS/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/03/0009-python-BFS/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
     <article id="post-0008-python-设计循环队列" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
@@ -317,6 +241,98 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/04/03/0008-python-设计循环队列/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-0009-python-BFS" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/03/0009-python-BFS/">python-数据结构 队列和广度优先搜索（BFS）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/03/0009-python-BFS/" class="archive-article-date">
+  	<time datetime="2019-04-03T13:05:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-队列和广度优先搜索（BFS）"><a href="#1-队列和广度优先搜索（BFS）" class="headerlink" title="1.队列和广度优先搜索（BFS）"></a>1.队列和广度优先搜索（BFS）</h4><p><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/217/queue-and-bfs/869/" target="_blank" rel="noopener">原题来自LeetCode </a><br>广度优先搜索（BFS）的一个常见应用是找出从根结点到目标结点的最短路径。在本文中，我们提供了一个示例来解释在 BFS 算法中是如何逐步应用队列的。</p>
+<h4 id="2-示例"><a href="#2-示例" class="headerlink" title="2.示例"></a>2.示例</h4><p>如何使用 BFS 来找出根结点 A 和目标结点 G 之间的最短路径。<br><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/217/queue-and-bfs/869/" target="_blank" rel="noopener">演示动画</a><br><img src="https://upload-images.jianshu.io/upload_images/14146428-b6fb475c3294a1ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        
+          <a class="article-more-a" href="/2019/04/03/0009-python-BFS/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/03/0009-python-BFS/">展开全文 >></a>
         </p>
       
 
@@ -718,93 +734,6 @@
 
 
   
-    <article id="post-0003-3" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/09/0003-3/">LeetCode-3. 无重复字符的最长子串（难度-中等）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/09/0003-3/" class="archive-article-date">
-  	<time datetime="2019-03-09T04:05:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-题目描述："><a href="#1-题目描述：" class="headerlink" title="1.题目描述："></a>1.题目描述：</h4><p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
-        
-          <a class="article-more-a" href="/2019/03/09/0003-3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/09/0003-3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-0001-1" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -868,6 +797,93 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/03/09/0001-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-0003-3" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/09/0003-3/">LeetCode-3. 无重复字符的最长子串（难度-中等）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/09/0003-3/" class="archive-article-date">
+  	<time datetime="2019-03-09T04:05:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-题目描述："><a href="#1-题目描述：" class="headerlink" title="1.题目描述："></a>1.题目描述：</h4><p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
+        
+          <a class="article-more-a" href="/2019/03/09/0003-3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/09/0003-3/">展开全文 >></a>
         </p>
       
 
